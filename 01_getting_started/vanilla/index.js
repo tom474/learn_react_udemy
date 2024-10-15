@@ -14,7 +14,7 @@ const content = [
 ];
 
 const btnWhyReact = document.getElementById("btn-why-react");
-const btnCoreFeatures = document.getElementById("btn-core-features");
+const btnCoreFeature = document.getElementById("btn-core-features");
 const btnResources = document.getElementById("btn-resources");
 const tabContent = document.getElementById("tab-content");
 
@@ -24,26 +24,21 @@ function displayContent(items) {
 		listContent += `<li>${item}</li>`;
 	}
 	const list = document.createElement("ul");
-	// Clear existing content
 	tabContent.innerHTML = "";
-	// Insert new content
 	list.innerHTML = listContent;
 	tabContent.append(list);
 }
 
-function highlightedButton(btn) {
-	// Clear all existing styling / highlights
+function highlightButton(btn) {
 	btnWhyReact.className = "";
-	btnCoreFeatures.className = "";
+	btnCoreFeature.className = "";
 	btnResources.className = "";
-
-	// Set new style / highlights
 	btn.className = "active";
 }
 
 function handleClick(event) {
 	const btnId = event.target.id;
-	highlightedButton(event.target);
+	highlightButton(event.target);
 	if (btnId === "btn-why-react") {
 		displayContent(content[0]);
 	} else if (btnId === "btn-core-features") {
@@ -53,9 +48,8 @@ function handleClick(event) {
 	}
 }
 
-// Initially show this content
 displayContent(content[0]);
 
 btnWhyReact.addEventListener("click", handleClick);
-btnCoreFeatures.addEventListener("click", handleClick);
+btnCoreFeature.addEventListener("click", handleClick);
 btnResources.addEventListener("click", handleClick);
